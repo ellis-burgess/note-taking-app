@@ -6,32 +6,20 @@ public partial class NewNote : ContentPage
 	{
 		InitializeComponent();
         SubmitNoteBtn.Clicked += SubmitNote;
-        NewNoteBtn.Clicked += AddNote;
-        EditNoteBtn.Clicked += EditNote;
 
     }
 
-    private void SubmitNote(object sender, EventArgs e)
+    async void SubmitNote(object sender, EventArgs e)
     {
-        editor.IsEnabled = false;
-        SubmitNoteBtn.IsEnabled = false;
-        SubmitNoteBtn.Text = "Submitted!";
-        EditNoteBtn.IsEnabled = true;
-    }
-
-    private void AddNote(object sender, EventArgs e)
-    {
-        editor.Text = null;
-        SubmitNoteBtn.IsEnabled = true;
-        SubmitNoteBtn.Text = "Submit Note";
-        EditNoteBtn.IsEnabled = false;
-    }
-
-    private void EditNote(object sender, EventArgs e)
-    {
-        editor.IsEnabled = true;
-        SubmitNoteBtn.IsEnabled = true;
-        SubmitNoteBtn.Text = "Submit Note";
+        if (await this.DisplayAlert(
+            "Save Note",
+            "Would you like to save this note?",
+            "Yes",
+            "No"))
+        {
+            editor.Text = null;
+            await DisplayAlert("Note Saved", "Note successully saved.", "OK");
+        }
     }
 
 }

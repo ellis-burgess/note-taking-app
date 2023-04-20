@@ -24,24 +24,9 @@
 
                     </Border>
 
-                    <FlexLayout
-                        Direction="Row"
-                        AlignItems="Center"
-                        JustifyContent="SpaceEvenly">
-                        <Button
-                            x:Name="SubmitNoteBtn"
-                            Text="Submit Note" />
-
-                        <Button
-                            x:Name="NewNoteBtn"
-                            Text="New Note" />
-
-                        <Button
-                            x:Name="EditNoteBtn"
-                            Text="Edit Note"
-                            IsEnabled="False" />
-
-                    </FlexLayout>
+                    <Button
+                        x:Name="SubmitNoteBtn"
+                        Text="Submit Note" />
 
 
                 </VerticalStackLayout>
