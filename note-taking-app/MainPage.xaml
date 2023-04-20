@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="note_taking_app.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label
+                Text="Notes App!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="You have no notes yet."
+                SemanticProperties.HeadingLevel="Level2"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Border>
+                <VerticalStackLayout
+                    Padding="30"
+                    Spacing="15">
+                    <Label
+                        Text="New Note"
+                        SemanticProperties.HeadingLevel="Level2"
+                        FontSize="18"
+                        HorizontalOptions="Start" />
+
+                    <Border>
+                        <Editor
+                            x:Name="editor"
+                            Placeholder="Enter your note here"
+                            HeightRequest="200" />
+
+                    </Border>
+
+                    <FlexLayout
+                        Direction="Row"
+                        AlignItems="Center"
+                        JustifyContent="SpaceEvenly">
+                        <Button
+                            x:Name="SubmitNoteBtn"
+                            Text="Submit Note" />
+
+                        <Button
+                            x:Name="NewNoteBtn"
+                            Text="New Note" />
+
+                        <Button
+                            x:Name="EditNoteBtn"
+                            Text="Edit Note"
+                            IsEnabled="False" />
+
+                    </FlexLayout>
+
+
+                </VerticalStackLayout>
+
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+
