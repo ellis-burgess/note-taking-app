@@ -55,6 +55,22 @@ namespace note_taking_app
             }
 
         }
+
+        public List<Note> GetAllNotes()
+        {
+            // TODO: Init then retrieve a list of Person objects from the database into a list
+            try
+            {
+                Init();
+                return conn.Table<Note>().ToList();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            }
+
+            return new List<Note>();
+        }
     }
 }
 

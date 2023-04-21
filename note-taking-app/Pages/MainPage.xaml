@@ -16,10 +16,19 @@
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Todo: Display notes here."
+                Text="My Notes"
                 SemanticProperties.HeadingLevel="Level2"
                 FontSize="18"
                 HorizontalOptions="Center" />
+
+            <CollectionView x:Name="AllNotes">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding NoteTitle}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
 
         </VerticalStackLayout>
     </ScrollView>
