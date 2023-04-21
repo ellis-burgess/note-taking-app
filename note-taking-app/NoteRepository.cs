@@ -53,24 +53,27 @@ namespace note_taking_app
 
 		}
 
-        public void AddNewNote(string note)
+        public void AddNewNote(string noteTitle, string noteContent)
         {
             int result = 0;
             try
             {
                 Init();
 
-                if (string.IsNullOrEmpty(note))
-                    throw new Exception("Note can't be empty.");
+                if (string.IsNullOrEmpty(noteTitle))
+                    throw new Exception("Title can't be empty.");
 
-                result = conn.Insert(new Note { NoteContent = note });
+				if (string.IsNullOrEmpty(noteContent))
+					throw new Exception("Note can't be empty.");
 
-                StatusMessage = string.Format("{0} record(s) added", result);
+				result = conn.Insert(new Note { NoteTitle = noteTitle, NoteContent = noteContent });
+
+                StatusMessage = string.Format("New note \"{0}\" saved", noteTitle);
             }
             catch (Exception ex)
             {
                 StatusMessage = string.Format("Failed to add {0}. Error: {1})",
-                    note, ex.Message);
+                    noteTitle, ex.Message);
             }
 
         }

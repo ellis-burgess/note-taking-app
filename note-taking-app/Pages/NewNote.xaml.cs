@@ -17,7 +17,7 @@ public partial class NewNote : ContentPage
             "Yes",
             "No"))
         {
-            App.NoteRepo.AddNewNote(editor.Text);
+            App.NoteRepo.AddNewNote(NoteTitle.Text, editor.Text);
             editor.Text = null;
             await DisplayAlert("Note Saved",
                 App.NoteRepo.StatusMessage,

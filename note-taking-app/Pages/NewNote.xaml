@@ -10,12 +10,15 @@
                 <VerticalStackLayout
                     Padding="30"
                     Spacing="15">
-                    <Label
+                <Border>
+                    <Editor
+                        x:Name="NoteTitle"
                         Text="New Note"
                         SemanticProperties.HeadingLevel="Level2"
                         FontSize="18"
-                        HorizontalOptions="Start" />
+                        HorizontalOptions="Fill" />
 
+                </Border>
                     <Border>
                         <Editor
                             x:Name="editor"

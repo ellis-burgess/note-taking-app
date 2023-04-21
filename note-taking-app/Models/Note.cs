@@ -9,7 +9,10 @@ namespace note_taking_app.Models
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
 
-        [MaxLength(250), Unique]
+		[MaxLength(250), Unique]
+		public string NoteTitle { get; set; }
+
+        [Unique]
         public string NoteContent { get; set; }
 	}
 }
