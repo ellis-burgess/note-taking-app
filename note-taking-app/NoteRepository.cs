@@ -14,15 +14,16 @@ namespace note_taking_app
 
 		public string StatusMessage { get; set; }
 
-		private SQLiteConnection conn;
+		private SQLiteAsyncConnection conn;
 
-		private void Init()
+		private async Task Init()
 		{
 			if (conn != null)
 				return;
 
-			conn = new SQLiteConnection(_dbPath);
-			conn.CreateTable<Note>();
+			conn = new SQLiteAsyncConnection(_dbPath);
+
+			await conn.CreateTableAsync<Note>();
 		}
 
 		public NoteRepository(string dbPath)
@@ -30,22 +31,28 @@ namespace note_taking_app
 			_dbPath = dbPath;
 		}
 
-        public void AddNewNote(string noteTitle, string noteContent)
+        public async Task AddNewNote(string noteTitle, string noteContent)
         {
             int result = 0;
             try
             {
-                Init();
+                // Call Init()
+                await Init();
 
+                // Validate title and content are both not empty
                 if (string.IsNullOrEmpty(noteTitle))
                     throw new Exception("Title can't be empty.");
 
 				if (string.IsNullOrEmpty(noteContent))
 					throw new Exception("Note can't be empty.");
 
-				result = conn.Insert(new Note { NoteTitle = noteTitle, NoteContent = noteContent });
+				result = await conn.InsertAsync(new Note
+                                                    { NoteTitle = noteTitle,
+                                                      NoteContent = noteContent
+                                                    });
 
-                StatusMessage = string.Format("New note \"{0}\" saved", noteTitle);
+                StatusMessage = string.Format("New note \"{0}\" saved",
+                                              noteTitle);
             }
             catch (Exception ex)
             {
@@ -55,16 +62,17 @@ namespace note_taking_app
 
         }
 
-        public List<Note> GetAllNotes()
+        public async Task<List<Note>> GetAllNotes()
         {
             try
             {
-                Init();
-                return conn.Table<Note>().ToList();
+                await Init();
+                return await conn.Table<Note>().ToListAsync();
             }
             catch (Exception ex)
             {
-                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+                StatusMessage = string.Format("Failed to retrieve data. {0}",
+                                             ex.Message);
             }
 
             return new List<Note>();
