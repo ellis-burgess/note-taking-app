@@ -9,7 +9,7 @@ public partial class NewNote : ContentPage
 
     }
 
-    async void SubmitNote(object sender, EventArgs e)
+    public async void SubmitNote(object sender, EventArgs e)
     {
         if (await this.DisplayAlert(
             "Save Note",
@@ -17,8 +17,9 @@ public partial class NewNote : ContentPage
             "Yes",
             "No"))
         {
-            App.NoteRepo.AddNewNote(NoteTitle.Text, editor.Text);
+            await App.NoteRepo.AddNewNote(NoteTitle.Text, editor.Text);
             editor.Text = null;
+            NoteTitle.Text = "New Note";
             await DisplayAlert("Note Saved",
                 App.NoteRepo.StatusMessage,
                 "OK");

@@ -8,9 +8,10 @@ public partial class MainPage : ContentPage
 
 	public MainPage()
 	{
-		InitializeComponent();
+        InitializeComponent();
         GetNotes();
-	}
+        RefreshNotesBtn.Clicked += RefreshNotes;
+    }
 
     public async void GetNotes()
     {
@@ -18,5 +19,10 @@ public partial class MainPage : ContentPage
 
         List<Note> notes = await App.NoteRepo.GetAllNotes();
         AllNotes.ItemsSource = notes;
+    }
+
+    public void RefreshNotes(object sender, EventArgs e)
+    {
+        GetNotes();
     }
 }
