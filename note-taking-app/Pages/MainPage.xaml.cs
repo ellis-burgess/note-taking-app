@@ -12,11 +12,11 @@ public partial class MainPage : ContentPage
         GetNotes();
 	}
 
-    public void GetNotes()
+    public async void GetNotes()
     {
         StatusMessage.Text = "";
 
-        List<Note> notes = App.NoteRepo.GetAllNotes();
+        List<Note> notes = await App.NoteRepo.GetAllNotes();
         AllNotes.ItemsSource = notes;
     }
 }
