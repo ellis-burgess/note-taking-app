@@ -9,11 +9,13 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-        OnGetButtonClicked();
+        GetNotes();
 	}
 
-    public void OnGetButtonClicked()
+    public void GetNotes()
     {
+        StatusMessage.Text = "";
+
         List<Note> notes = App.NoteRepo.GetAllNotes();
         AllNotes.ItemsSource = notes;
     }

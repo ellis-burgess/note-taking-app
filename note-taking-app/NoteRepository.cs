@@ -21,7 +21,6 @@ namespace note_taking_app
 			if (conn != null)
 				return;
 
-			Console.WriteLine("Path" + _dbPath);
 			conn = new SQLiteConnection(_dbPath);
 			conn.CreateTable<Note>();
 		}
@@ -58,7 +57,6 @@ namespace note_taking_app
 
         public List<Note> GetAllNotes()
         {
-            // TODO: Init then retrieve a list of Person objects from the database into a list
             try
             {
                 Init();

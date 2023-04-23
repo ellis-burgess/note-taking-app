@@ -24,10 +24,15 @@
             <CollectionView x:Name="AllNotes">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Label Text="{Binding NoteTitle}" />
+                        <Button x:Name="{Binding ID}"
+                            Text="{Binding NoteTitle}" />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <Label
+                x:Name="StatusMessage"
+                Text="" />
 
 
         </VerticalStackLayout>
