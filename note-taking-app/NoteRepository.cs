@@ -46,17 +46,20 @@ namespace note_taking_app
 				if (string.IsNullOrEmpty(noteContent))
 					throw new Exception("Note can't be empty.");
 
-				result = await conn.InsertAsync(new Note
-                                                    { NoteTitle = noteTitle,
-                                                      NoteContent = noteContent
-                                                    });
+				result = await conn.InsertAsync(
+                    new Note
+                    {
+                        NoteTitle = noteTitle,
+                        NoteContent = noteContent
+                    });
 
-                StatusMessage = string.Format("New note \"{0}\" saved",
-                                              noteTitle);
+                StatusMessage = string.Format(
+                    "New note \"{0}\" saved", noteTitle);
             }
             catch (Exception ex)
             {
-                StatusMessage = string.Format("Failed to add {0}. Error: {1})",
+                StatusMessage = string.Format(
+                    "Failed to add {0}. Error: {1})",
                     noteTitle, ex.Message);
             }
 
@@ -71,8 +74,9 @@ namespace note_taking_app
             }
             catch (Exception ex)
             {
-                StatusMessage = string.Format("Failed to retrieve data. {0}",
-                                             ex.Message);
+                StatusMessage = string.Format(
+                    "Failed to retrieve data. {0}",
+                    ex.Message);
             }
 
             return new List<Note>();

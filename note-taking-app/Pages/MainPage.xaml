@@ -21,8 +21,9 @@
                 FontSize="18"
                 HorizontalOptions="Center" />
 
-            <Button x:Name="RefreshNotesBtn"
-                    Text="Refresh notes" />
+            <Button
+                x:Name="RefreshNotesBtn"
+                Text="Refresh notes" />
 
             <CollectionView x:Name="AllNotes">
                 <CollectionView.ItemTemplate>
