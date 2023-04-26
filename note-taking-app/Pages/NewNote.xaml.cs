@@ -1,4 +1,6 @@
-﻿namespace note_taking_app;
+﻿using note_taking_app.Models;
+
+namespace note_taking_app;
 
 public partial class NewNote : ContentPage
 {

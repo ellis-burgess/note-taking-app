@@ -10,6 +10,7 @@ public partial class MainPage : ContentPage
 	{
         InitializeComponent();
         GetNotes();
+
         RefreshNotesBtn.Clicked += RefreshNotes;
     }
 
@@ -18,7 +19,25 @@ public partial class MainPage : ContentPage
         StatusMessage.Text = "";
 
         List<Note> notes = await App.NoteRepo.GetAllNotes();
-        AllNotes.ItemsSource = notes;
+
+        AllNotes.Children.Clear();
+
+        foreach (var note in notes)
+        {
+
+            int ThisNoteID = note.Id;
+
+            Button NoteButton = new Button
+            {
+                Text = note.NoteTitle,
+                Command = new Command(async (ID) =>
+                {
+                    await Navigation.PushAsync(new DisplayNote(ThisNoteID));
+                })
+            };
+
+            AllNotes.Children.Add(NoteButton);
+        }
     }
 
     public void RefreshNotes(object sender, EventArgs e)

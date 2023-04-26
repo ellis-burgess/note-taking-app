@@ -81,6 +81,24 @@ namespace note_taking_app
 
             return new List<Note>();
         }
+
+        public async Task<Note> GetNote(int noteID)
+        {
+            try
+            {
+                await Init();
+                return await conn.Table<Note>().
+                    FirstOrDefaultAsync(n => n.Id == noteID);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format(
+                    "Error retrieving note. {0}",
+                    ex.Message);
+            }
+
+            return new Note();
+        }
     }
 }
 

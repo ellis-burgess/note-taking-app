@@ -25,14 +25,8 @@
                 x:Name="RefreshNotesBtn"
                 Text="Refresh notes" />
 
-            <CollectionView x:Name="AllNotes">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Button x:Name="{Binding ID}"
-                            Text="{Binding NoteTitle}" />
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <VerticalStackLayout x:Name="AllNotes">
+            </VerticalStackLayout>
 
             <Label
                 x:Name="StatusMessage"
