@@ -14,7 +14,7 @@
                     <Editor
                         x:Name="NoteTitle"
                         Text="New Note"
-                        SemanticProperties.HeadingLevel="Level2"
+                        SemanticProperties.HeadingLevel="Level1"
                         FontSize="18"
                         HorizontalOptions="Fill" />
 
