@@ -11,7 +11,8 @@ public partial class MainPage : ContentPage
         InitializeComponent();
         GetNotes();
 
-        RefreshNotesBtn.Clicked += RefreshNotes;
+        RefreshNotesIcon.Clicked += RefreshNotes;
+        AddNoteIcon.Clicked += AddNote;
     }
 
     public async void GetNotes()
@@ -33,7 +34,8 @@ public partial class MainPage : ContentPage
                 Command = new Command(async (ID) =>
                 {
                     await Navigation.PushAsync(new DisplayNote(ThisNoteID));
-                })
+                }),
+                Margin = 5
             };
 
             AllNotes.Children.Add(NoteButton);
@@ -43,5 +45,10 @@ public partial class MainPage : ContentPage
     public void RefreshNotes(object sender, EventArgs e)
     {
         GetNotes();
+    }
+
+    public void AddNote(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new NewNote());
     }
 }

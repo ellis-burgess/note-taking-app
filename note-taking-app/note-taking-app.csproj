@@ -59,9 +59,15 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\" />
 	  <None Remove="Pages\" />
+	  <None Remove="Resources\Images\refresh.svg" />
+	  <None Remove="Resources\Images\plus.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Pages\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\refresh.svg" />
+	  <MauiImage Include="Resources\Images\plus.svg" />
 	</ItemGroup>
 </Project>
